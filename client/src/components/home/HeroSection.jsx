@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, Lock, Globe } from 'lucide-react';
-import logoImg from '../../images/logo.jpeg';
+import logoWhite from '../../images/logo_white_transparent.png';
 
 export default function HeroSection() {
   return (
@@ -151,7 +151,7 @@ export default function HeroSection() {
                 {/* Logo display */}
                 <div className="flex justify-center mb-8">
                   <motion.img
-                    src={logoImg}
+                    src={logoWhite}
                     alt="Intelera"
                     className="h-20 xl:h-24 w-auto object-contain drop-shadow-2xl"
                     initial={{ opacity: 0, y: 12 }}

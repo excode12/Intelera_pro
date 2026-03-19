@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AppContext';
-import logoImg from '../../images/logo.jpeg';
+import logoWhite from '../../images/logo_white_transparent.png';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -35,9 +35,7 @@ export default function AdminLogin() {
       >
         <div className="glass rounded-2xl p-8 border border-white/10">
           <div className="flex justify-center mb-4">
-            <div className="bg-white/90 rounded-xl p-2">
-              <img src={logoImg} alt="Intelera" className="h-10 w-auto object-contain" />
-            </div>
+            <img src={logoWhite} alt="Intelera" className="h-12 w-auto object-contain" />
           </div>
           <p className="text-neutral-400 text-center text-sm">Admin Dashboard</p>
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">

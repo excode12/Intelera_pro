@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AppContext';
-import logoImg from '../../images/logo.jpeg';
+import logoWhite from '../../images/logo_white_transparent.png';
 
 const nav = [
   { to: '/admin', label: 'Overview', end: true, icon: '⬡' },
@@ -33,10 +33,8 @@ export default function AdminLayout() {
         <div className="p-4 flex items-center justify-between border-b border-white/5 min-h-[56px]">
           {sidebarOpen && (
             <Link to="/admin" className="flex items-center gap-2 truncate">
-              <div className="bg-white/90 rounded-md p-1">
-                <img src={logoImg} alt="Intelera" className="h-6 w-auto object-contain" />
-              </div>
-              <span className="text-xs uppercase tracking-wider text-neutral-400 font-medium">Admin</span>
+              <img src={logoWhite} alt="Intelera" className="h-7 w-auto object-contain" />
+              <span className="text-xs uppercase tracking-wider text-neutral-400 font-medium ml-2">Admin</span>
             </Link>
           )}
           <button

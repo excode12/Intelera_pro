@@ -5,7 +5,8 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import api from '../../lib/api';
 import { defaultServices } from '../../lib/servicesData';
 import { servicesHeroImage } from '../../lib/siteImages';
-import logoImg from '../../images/logo.jpeg';
+import logoWhite from '../../images/logo_white_transparent.png';
+import logoDark from '../../images/logo_dark_transparent.png';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -42,7 +43,7 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <img src={logoImg} alt="Intelera" className="h-9 w-auto object-contain" />
+            <img src={scrolled ? logoDark : logoWhite} alt="Intelera" className="h-9 w-auto object-contain" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -50,7 +51,7 @@ export default function Nav() {
               <motion.div key={link.to} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i }}>
                 <Link
                   to={link.to}
-                  className="text-sm font-medium text-stone-600 hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform"
+                  className={`text-sm font-medium ${scrolled ? 'text-stone-600' : 'text-white/90'} hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform`}
                 >
                   {link.label}
                 </Link>
@@ -63,7 +64,7 @@ export default function Nav() {
             >
               <Link
                 to="/services"
-                className="text-sm font-medium text-stone-600 hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform inline-flex items-center gap-0.5"
+                 className={`text-sm font-medium ${scrolled ? 'text-stone-600' : 'text-white/90'} hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform inline-flex items-center gap-0.5`}
               >
                 Services
                 <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} strokeWidth={2} />
@@ -108,7 +109,7 @@ export default function Nav() {
               <motion.div key={link.to} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * (i + 3) }}>
                 <Link
                   to={link.to}
-                  className="text-sm font-medium text-stone-600 hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform"
+                  className={`text-sm font-medium ${scrolled ? 'text-stone-600' : 'text-white/90'} hover:text-[#7C3AED] transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-0.5 after:bg-[#7C3AED] after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform`}
                 >
                   {link.label}
                 </Link>
@@ -131,7 +132,7 @@ export default function Nav() {
             </Link>
             <button
               type="button"
-              className="md:hidden p-2 text-stone-700"
+               className={`md:hidden p-2 ${scrolled ? 'text-stone-700' : 'text-white/90'}`}
               onClick={() => setMobileOpen(true)}
               aria-label="Menu"
             >
@@ -159,7 +160,7 @@ export default function Nav() {
               className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl border-l border-stone-200 p-8 flex flex-col gap-6"
             >
               <div className="flex justify-between items-center">
-                <img src={logoImg} alt="Intelera" className="h-7 w-auto object-contain" />
+                <img src={mobileOpen ? logoDark : (scrolled ? logoDark : logoWhite)} alt="Intelera" className="h-7 w-auto object-contain" />
                 <button type="button" onClick={() => setMobileOpen(false)} className="p-2 text-stone-600 hover:text-stone-900" aria-label="Close menu">
                   <X className="w-5 h-5" strokeWidth={1.8} />
                 </button>

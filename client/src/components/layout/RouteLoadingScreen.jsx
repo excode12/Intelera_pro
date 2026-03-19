@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImg from '../../images/logo.jpeg';
+import logoDark from '../../images/logo_dark_transparent.png';
 
 export default function RouteLoadingScreen() {
   const location = useLocation();
@@ -39,7 +39,7 @@ export default function RouteLoadingScreen() {
           aria-label="Loading"
         >
           <motion.img
-            src={logoImg}
+            src={logoDark}
             alt="Intelera"
             className="h-14 w-auto object-contain"
             initial={{ opacity: 0, scale: 0.85 }}
