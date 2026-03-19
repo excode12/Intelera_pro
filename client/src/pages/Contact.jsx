@@ -122,7 +122,7 @@ export default function Contact() {
                   <li className="flex gap-3"><span className="text-[#0EA5E9] font-bold">3.</span> We propose an approach and quote—no obligation to proceed.</li>
                 </ol>
               </div>
-              <MonroviaMap />
+              <MonroviaMap dark={false} />
 
             </motion.div>
           </div>

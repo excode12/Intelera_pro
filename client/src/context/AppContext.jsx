@@ -1,16 +1,16 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { auth as authApi } from '../lib/api';
 
-const ThemeContext = createContext({ dark: true, setDark: () => {} });
-const AuthContext = createContext({ user: null, login: async () => {}, logout: () => {}, loading: true });
+const ThemeContext = createContext({ dark: true, setDark: () => { } });
+const AuthContext = createContext({ user: null, login: async () => { }, logout: () => { }, loading: true });
 
 export function ThemeProvider({ children }) {
   const [dark, setDark] = useState(() => {
-    try { return localStorage.getItem('intelera_theme') !== 'light'; } catch { return true; }
+    try { return localStorage.getItem('intelera_theme') === 'dark'; } catch { return false; }
   });
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark);
-    try { localStorage.setItem('intelera_theme', dark ? 'dark' : 'light'); } catch (_) {}
+    try { localStorage.setItem('intelera_theme', dark ? 'dark' : 'light'); } catch (_) { }
   }, [dark]);
   return <ThemeContext.Provider value={{ dark, setDark }}>{children}</ThemeContext.Provider>;
 }

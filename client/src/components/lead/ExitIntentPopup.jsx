@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, ArrowRight, X } from 'lucide-react';
@@ -6,23 +6,30 @@ import { Shield, ArrowRight, X } from 'lucide-react';
 export default function ExitIntentPopup() {
   const [show, setShow] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const shownRef = useRef(false);
 
   useEffect(() => {
     const key = 'intelera_exit_dismissed';
     if (typeof window === 'undefined' || localStorage.getItem(key)) return;
     const handleMouseLeave = (e) => {
-      if (e.clientY <= 0 && !dismissed) setShow(true);
+      if (e.clientY <= 0 && !dismissed && !shownRef.current) {
+        shownRef.current = true;
+        setShow(true);
+      }
     };
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [dismissed]);
 
-  // First-time visit: show same popup after 10 seconds
+  // First-time visit: show popup after 10 seconds if not already shown
   useEffect(() => {
     const key = 'intelera_exit_dismissed';
     if (typeof window === 'undefined' || localStorage.getItem(key)) return;
     const t = setTimeout(() => {
-      setShow(true);
+      if (!shownRef.current) {
+        shownRef.current = true;
+        setShow(true);
+      }
     }, 10000);
     return () => clearTimeout(t);
   }, []);

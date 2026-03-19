@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AppContext';
+import logoImg from '../../images/logo.jpeg';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -33,8 +34,12 @@ export default function AdminLogin() {
         className="w-full max-w-md"
       >
         <div className="glass rounded-2xl p-8 border border-white/10">
-          <h1 className="text-2xl font-bold text-white text-center">Admin Login</h1>
-          <p className="text-neutral-400 text-center text-sm mt-2">Intelera Dashboard</p>
+          <div className="flex justify-center mb-4">
+            <div className="bg-white/90 rounded-xl p-2">
+              <img src={logoImg} alt="Intelera" className="h-10 w-auto object-contain" />
+            </div>
+          </div>
+          <p className="text-neutral-400 text-center text-sm">Admin Dashboard</p>
           <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-2">Email</label>

@@ -1,15 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const WORD = 'Intelera';
-const CHAR_DELAY_MS = 120;
-const CURSOR_BLINK_MS = 530;
+import logoImg from '../../images/logo.jpeg';
 
 export default function RouteLoadingScreen() {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
-  const [typed, setTyped] = useState('');
   const prevKeyRef = useRef(location.key);
   const isFirstMount = useRef(true);
   const timeoutRef = useRef(null);
@@ -24,20 +20,9 @@ export default function RouteLoadingScreen() {
     prevKeyRef.current = location.key;
 
     setVisible(true);
-    setTyped('');
-
-    let charIndex = 0;
-    const intervalId = setInterval(() => {
-      charIndex += 1;
-      if (charIndex <= WORD.length) setTyped(WORD.slice(0, charIndex));
-      if (charIndex >= WORD.length) {
-        clearInterval(intervalId);
-        timeoutRef.current = setTimeout(() => setVisible(false), 400);
-      }
-    }, CHAR_DELAY_MS);
+    timeoutRef.current = setTimeout(() => setVisible(false), 900);
 
     return () => {
-      clearInterval(intervalId);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [location.key]);
@@ -53,19 +38,20 @@ export default function RouteLoadingScreen() {
           aria-live="polite"
           aria-label="Loading"
         >
-          <div className="flex items-baseline justify-center gap-0.5">
-            <span
-              className="text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              {typed}
-            </span>
-            <span
-              className="inline-block w-0.5 h-8 sm:h-9 bg-[#7C3AED] animate-cursor"
-              style={{ animationDuration: `${CURSOR_BLINK_MS}ms` }}
-              aria-hidden
-            />
-          </div>
+          <motion.img
+            src={logoImg}
+            alt="Intelera"
+            className="h-14 w-auto object-contain"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          />
+          <motion.div
+            className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#3730A3] via-[#4338CA] to-[#6366F1]"
+            initial={{ width: '0%' }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          />
         </motion.div>
       )}
     </AnimatePresence>

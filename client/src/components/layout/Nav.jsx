@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import api from '../../lib/api';
 import { defaultServices } from '../../lib/servicesData';
 import { servicesHeroImage } from '../../lib/siteImages';
+import logoImg from '../../images/logo.jpeg';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -41,10 +42,7 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold font-[family-name:var(--font-display)] tracking-tight text-[#1E293B]">
-              Intelera
-            </span>
-            <span className="text-[10px] uppercase tracking-widest text-[#7C3AED] font-medium">Security</span>
+            <img src={logoImg} alt="Intelera" className="h-9 w-auto object-contain" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -161,7 +159,7 @@ export default function Nav() {
               className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl border-l border-stone-200 p-8 flex flex-col gap-6"
             >
               <div className="flex justify-between items-center">
-                <span className="font-bold text-stone-800">Menu</span>
+                <img src={logoImg} alt="Intelera" className="h-7 w-auto object-contain" />
                 <button type="button" onClick={() => setMobileOpen(false)} className="p-2 text-stone-600 hover:text-stone-900" aria-label="Close menu">
                   <X className="w-5 h-5" strokeWidth={1.8} />
                 </button>

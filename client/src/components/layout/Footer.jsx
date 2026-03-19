@@ -3,6 +3,7 @@ import { Linkedin, Twitter, Mail, MapPin, ArrowRight } from 'lucide-react';
 import NewsletterSignup from '../lead/NewsletterSignup';
 import ChecklistDownload from '../lead/ChecklistDownload';
 import MonroviaMap from '../lead/MonroviaMap';
+import logoImg from '../../images/logo.jpeg';
 
 const footerLinks = {
   Company: [
@@ -33,11 +34,10 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-10 gap-10 lg:gap-8">
             {/* Brand + contact */}
             <div className="sm:col-span-2 lg:col-span-4">
-              <Link to="/" className="inline-flex items-baseline gap-2 mb-5">
-                <span className="text-2xl font-bold text-white" style={{ fontFamily: 'var(--font-display)' }}>
-                  Intelera
-                </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-[#38BDF8] font-medium">Security</span>
+              <Link to="/" className="inline-flex items-center gap-2 mb-5">
+                <div className="bg-white/90 rounded-lg p-1.5">
+                  <img src={logoImg} alt="Intelera" className="h-8 w-auto object-contain" />
+                </div>
               </Link>
               <p className="text-stone-400 text-sm max-w-sm leading-relaxed">
                 Intelligent Security. Engineered Digital Power. We protect enterprises with cutting-edge cybersecurity and secure web engineering from Monrovia, Liberia.
